@@ -18,7 +18,7 @@ const HomePage = () => {
                 <h1 className='uppercase lg:text-5xl mb-5 font-bold '>Cox's bazar</h1>
                 <p className='text-gray-400 text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam esse porro, minima aperiam excepturi quam reiciendis. Quis excepturi iste non sed cumque magnam vitae omnis voluptate adipisci, enim quos eveniet Quis excepturi iste non sed cumque magnam vitae omnis voluptate adipisci, enim quos eveniet</p>
 
-                <NavLink> <button className="px-5 py-2 bg-yellow-600 rounded-md text-black mt-5">Booking</button> </NavLink>
+                <NavLink to="/booking"> <button className="px-5 py-2 font-bold bg-yellow-600 rounded-md text-black mt-5">Booking</button> </NavLink>
             </div>
 
             <div className='col-span-2'>
@@ -38,7 +38,7 @@ const HomePage = () => {
                         data && data.map(spot=> <SwiperSlide style={
                             {backgroundImage:`url(${spot.thumbnail})`, height:"300px", backgroundSize:"100% 100%", backgroundColor:"#AEAEAE", backgroundBlendMode:"multiply",borderRadius:"4%", padding:"10px"}}
                          >
-                            
+
                             <h1 className='absolute bottom-10 text-2xl font-bold text-gray-200'>{spot.spotName}</h1>
                             </SwiperSlide> )
                     }
