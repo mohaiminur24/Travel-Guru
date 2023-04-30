@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../../App";
+import HomePage from "../Pages/HomePage/HomePage";
 
 const route = createBrowserRouter([
         {
@@ -8,7 +9,8 @@ const route = createBrowserRouter([
             children:[
                 {
                     path:"/",
-                    element: <h1>MohaiMinur</h1>
+                    element: <HomePage/>,
+                    loader:()=>fetch("http://localhost:5000/")
                 }
             ]
             
