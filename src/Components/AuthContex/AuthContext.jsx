@@ -1,6 +1,6 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import app from './Firebase';
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
 const auth = getAuth(app)
 
@@ -12,12 +12,26 @@ const AuthContext = ({children}) => {
     const handleRegister = (email,password) =>{
         return createUserWithEmailAndPassword(auth,email,password);
     };
+    const Logout = ()=>{
+        return signOut(auth);
+    };
 
     const ContextValue = {
         user,
         setUser,
-        handleRegister
+        handleRegister,
+        Logout
     };
+
+    useEffect(()=>{
+       const unsuscribe =  onAuthStateChanged(auth,(loggeduser)=>{
+            setUser(loggeduser);
+        });
+
+        return(()=>{
+            return unsuscribe;
+        })
+    },[])
 
     return (
         <userContext.Provider value={ContextValue}>
