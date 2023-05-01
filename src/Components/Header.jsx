@@ -2,10 +2,10 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 
-const Header = () => {
+const Header = ({children}) => {
     return (
         <div className='bg-transparent w-4/5 mx-auto h-20 flex justify-between items-center'>
-            <img className='w-20 h-fit' src="logo.png" alt="" />
+            <img className='w-20 h-fit' src={children} alt="" />
             <div className='flex gap-10 items-center'>
                 <div className='relative'>
                     <span className='absolute top-3 left-4 opacity-50 left-'><FaSearch/></span>
@@ -27,7 +27,7 @@ const Header = () => {
                     </li>
                 </ul>
 
-                <NavLink className="px-5 bg-yellow-600 text-black py-2 rounded-md shadow-md">Login</NavLink>
+                <NavLink to="/login" className="px-5 bg-yellow-600 text-black py-2 rounded-md shadow-md">Login</NavLink>
             </div>
         </div>
     );

@@ -2,6 +2,9 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../../App";
 import HomePage from "../Pages/HomePage/HomePage";
 import StartBookingfrom from "../Pages/HomePage/StartBookingfrom";
+import LoginPage from "../Pages/LoginRegistrationPage/LoginPage";
+import SignInLayout from "../Pages/LoginRegistrationPage/SignInLayout";
+import SignUpLayout from "../Pages/LoginRegistrationPage/SignUpLayout";
 
 const route = createBrowserRouter([
         {
@@ -19,6 +22,20 @@ const route = createBrowserRouter([
                 }
             ]
             
+        },
+        {
+            path:"/login",
+            element:<LoginPage/>,
+            children:[
+                {
+                    path:"/login",
+                    element: <SignInLayout/>
+                },
+                {
+                    path:"/login/registration",
+                    element:<SignUpLayout/>
+                }
+            ]
         }
 ]);
 
