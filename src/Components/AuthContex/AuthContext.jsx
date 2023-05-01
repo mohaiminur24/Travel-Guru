@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import app from './Firebase';
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 
 const auth = getAuth(app)
 const googleProvider = new GoogleAuthProvider();
@@ -27,6 +27,9 @@ const AuthContext = ({children}) => {
     const handlegoogleLogin = ()=>{
         setLoading(true);
        return signInWithPopup(auth, googleProvider);
+    };
+    const handleforgetpassword =(email)=>{
+       return sendPasswordResetEmail(auth,email);
     }
 
     const ContextValue = {
@@ -36,7 +39,8 @@ const AuthContext = ({children}) => {
         handleRegister,
         Logout,
         handleLogin,
-        handlegoogleLogin
+        handlegoogleLogin,
+        handleforgetpassword
     };
 
     useEffect(()=>{
