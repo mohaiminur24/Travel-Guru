@@ -5,6 +5,7 @@ import StartBookingfrom from "../Pages/HomePage/StartBookingfrom";
 import LoginPage from "../Pages/LoginRegistrationPage/LoginPage";
 import SignInLayout from "../Pages/LoginRegistrationPage/SignInLayout";
 import SignUpLayout from "../Pages/LoginRegistrationPage/SignUpLayout";
+import PrivateRoute from "../AuthContex/PrivateRoute";
 
 const route = createBrowserRouter([
         {
@@ -18,7 +19,7 @@ const route = createBrowserRouter([
                 },
                 {
                     path:"/booking",
-                    element:<StartBookingfrom/>
+                    element: <PrivateRoute><StartBookingfrom/></PrivateRoute>
                 }
             ]
             

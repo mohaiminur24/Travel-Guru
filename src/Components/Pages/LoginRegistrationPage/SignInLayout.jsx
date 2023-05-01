@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import SigninSocialmedia from './SigninSocialmedia';
 import { userContext } from '../../AuthContex/AuthContext';
 import toast, { Toaster } from 'react-hot-toast';
@@ -8,6 +8,10 @@ import toast, { Toaster } from 'react-hot-toast';
 const SignInLayout = () => {
     const [errormessage, setError] = useState(null);
     const {handleLogin}= useContext(userContext);
+    const loaction = useLocation();
+    const fromwhere = loaction.state?.from?.pathname || "/";
+    const nevigate = useNavigate();
+
     const handleLoginfrom = (event) =>{
         event.preventDefault();
         const from = event.target;
@@ -16,7 +20,9 @@ const SignInLayout = () => {
         const password = from.password.value;
 
         handleLogin(email,password).then(res=>{
-            toast.success('Successfully toasted!')
+            toast.success('Successfully Login user!');
+            from.reset();
+            nevigate(fromwhere);
         }).catch(error=>{
             setError(error.message);
         });
