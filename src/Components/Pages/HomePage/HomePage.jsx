@@ -35,7 +35,7 @@ const HomePage = () => {
                 effect={""}
                 >
                     {
-                        data && data.map(spot=> <SwiperSlide style={
+                        data && data.map(spot=> <SwiperSlide key={spot.id} style={
                             {backgroundImage:`url(${spot.thumbnail})`, height:"300px", backgroundSize:"100% 100%", backgroundColor:"#AEAEAE", backgroundBlendMode:"multiply",borderRadius:"4%", padding:"10px"}}
                          >
 

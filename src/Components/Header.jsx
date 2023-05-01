@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch,FaUserTie } from 'react-icons/fa';
+import { userContext } from './AuthContex/AuthContext';
 
 const Header = ({children}) => {
+    const {user} = useContext(userContext);
+    console.log(user);
     return (
         <div className='bg-transparent w-4/5 mx-auto h-20 flex justify-between items-center'>
             <img className='w-20 h-fit' src={children} alt="" />
@@ -27,7 +30,14 @@ const Header = ({children}) => {
                     </li>
                 </ul>
 
-                <NavLink to="/login" className="px-5 bg-yellow-600 text-black py-2 rounded-md shadow-md">Login</NavLink>
+                <span>{user && <FaUserTie/>}</span>
+
+                {
+                    user?<button className="px-5 bg-yellow-600 text-black py-2 rounded-md shadow-md">Logout</button>:<NavLink to="/login" className="px-5 bg-yellow-600 text-black py-2 rounded-md shadow-md">Login</NavLink>
+                }
+
+                
+                
             </div>
         </div>
     );
