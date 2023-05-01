@@ -10,7 +10,7 @@ const Header = ({children}) => {
             Logout().then(res=>{
                 toast.success('LogOut complete Successfully!')
             }).catch(error=>{
-                console.log(error.message);
+                console.error(error.message);
             })
     }
     return (
